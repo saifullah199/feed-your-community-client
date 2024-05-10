@@ -8,6 +8,7 @@ import MyFoodRequest from "../Pages/MyFoodRequest";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import ViewDetails from "../Pages/ViewDetails";
+import UpdateFood from "../Pages/UpdateFood";
 
 
 const router = createBrowserRouter([
@@ -50,7 +51,12 @@ const router = createBrowserRouter([
             element:  <ViewDetails/> ,
             loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
             
-          },
+        },
+        {
+            path:'/updatefood/:id',
+            element: <UpdateFood/>,
+            loader: ({params}) => fetch(`http://localhost:5000/food/${params.id}`)
+        }
       ]
     },
   ]);

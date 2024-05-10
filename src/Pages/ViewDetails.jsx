@@ -12,7 +12,7 @@ const ViewDetails = () => {
         <div className="m-10">
              <div data-aos="zoom-in" data-aos-duration="1000" className="card relative  bg-base-100 shadow-xl">
   <figure className="relative">
-    <img className="rounded-2xl" src= {foodImage} alt="Album"/>
+    <img className="rounded-2xl" src={foodImage} alt="Album"/>
     </figure>
   <div className="card-body absolute top-72 right-10 text-black">
     <h2 className="card-title text-3xl font-bold"> {foodName} </h2>
