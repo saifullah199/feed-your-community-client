@@ -12,16 +12,16 @@ const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext)
 
     // Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-      toast.success('Signin Successful')
-      navigate('/')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
-  }
+//   const handleGoogleSignIn = async () => {
+//     try {
+//       await signInWithGoogle()
+//       toast.success('Signin Successful')
+//       navigate('/')
+//     } catch (err) {
+//       console.log(err)
+//       toast.error(err?.message)
+//     }
+//   }
 
   // Email Password Signin
   const handleSignIn = async e => {
@@ -61,7 +61,7 @@ const Login = () => {
             </p>
   
             <div
-              onSubmit={handleGoogleSignIn}
+              
               className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
             >
               <div className='px-4 py-2'>

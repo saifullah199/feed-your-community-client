@@ -8,7 +8,7 @@ import toast from 'react-hot-toast'
 const SignUp = () => {
 
     const navigate = useNavigate()
-  const { signInWithGoogle, createUser, updateUserProfile, user, setUser } =
+  const { signInWithGoogle, createUser, user,  } =
     useContext(AuthContext)
 
     const handleSignUp = async e => {
@@ -23,8 +23,7 @@ const SignUp = () => {
           //2. User Registration
           const result = await createUser(email, pass)
           console.log(result)
-        //   await updateUserProfile(name, photo)
-        //   setUser({ ...user, photoURL: photo, displayName: name })
+     
           navigate('/')
           toast.success('Signup Successful')
         } catch (err) {
@@ -34,16 +33,7 @@ const SignUp = () => {
       }
 
        // Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      await signInWithGoogle()
-      toast.success('Signin Successful')
-      navigate('/')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
-  }
+  
     return (
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
       <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
@@ -57,7 +47,7 @@ const SignUp = () => {
           </p>
 
           <div
-            onSubmit={handleGoogleSignIn}
+            
             className='flex cursor-pointer items-center justify-center mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg   hover:bg-gray-50 '
           >
             <div className='px-4 py-2'>
