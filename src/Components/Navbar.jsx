@@ -1,29 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 
 const Navbar = () => {
 
-    // const {user,logOut} = useContext(AuthContext)
+     const {user,logOut} = useContext(AuthContext)
 
     
 
     
 
-//   const handleSignOut = () => {
-//     logOut()
-//     .then()
-//     .catch()
-//   }
+  const handleSignOut = () => {
+    logOut()
+    .then()
+    .catch()
+  }
 
-//   const handleToggle = e => {
-//     if(e.target.checked){
-//       setTheme('synthwave')
-//     }else {
-//       setTheme('light')
-//     }
-//   }
+ 
     const navlinks = <>
         <li><NavLink className={({isActive}) =>
       isActive ? 'btn btn-outline btn-success font-bold' : 'font-bold'
@@ -67,14 +62,14 @@ const Navbar = () => {
         {navlinks}
       </ul>
     </div>
-    <a className="btn btn-outline btn-primary text-xl">Forests To Farms</a>
+    <a className="btn btn-outline btn-warning text-xl">Feed Your Community</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
       {navlinks}
     </ul>
   </div>
-   {/* <div className="navbar-end flex gap-2 ">
+    <div className="navbar-end flex gap-2 ">
     
     
 
@@ -95,8 +90,8 @@ const Navbar = () => {
           <Link to='/login'>
             <button className="btn btn-outline btn-success"> Login</button>
           </Link>
-          <Link to='/register'>
-            <button className="btn btn-outline btn-success">Register</button>
+          <Link to='/signup'>
+            <button className="btn btn-outline btn-success">Sign Up</button>
           </Link>
       </div>
     }
@@ -104,7 +99,7 @@ const Navbar = () => {
   
 
 
-  </div>  */}
+  </div>  
 
 </div>
         </div>
