@@ -1,18 +1,19 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const UpdateFood = () => {
     const {user} = useContext(AuthContext)
     const food = useLoaderData()
     const {foodName, quantity, location, date, notes,
-        foodImage} = food;
+        foodImage,_id} = food;
 
     const handleUpdateFood = e =>{
         e.preventDefault()
         const form = e.target;
-        const foodName = form.name.value;
+        const name = form.name.value;
         const quantity = form.quantity.value;
         const location = form.location.value;
         const date = form.date.value;
@@ -22,14 +23,14 @@ const UpdateFood = () => {
          
         const foodImage = form.photo.value;
 
-        const updateFood = {foodName, quantity, location, date, notes,
+        const updateFood = {name, quantity, location, date, notes,
            foodImage
         }
 
         console.log(updateFood);
 
         // send data to the server
-        fetch(`http://localhost:5000/food/$`,{
+        fetch(`http://localhost:5000/food/${_id}`,{
            method:'PUT',
            headers: {
             'content-type': 'application/json'
@@ -39,6 +40,14 @@ const UpdateFood = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            if(data.modifiedCount >0){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Food Updated Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
         })
     }
 

@@ -58,7 +58,9 @@ const ManageMyFoods = () => {
         <th>
           
         </th>
+        <th>Food Image</th>
         <th>Food Name</th>
+        <th>Pickup Location</th>
         <th>Additional Notes</th>
         <th>Expired Date</th>
         <th>Quantity</th>
@@ -83,12 +85,16 @@ const ManageMyFoods = () => {
                     <img src={food.foodImage} />
                   </div>
                 </div>
-                <div>
-                    <h2 className="font-bold text-xl">
+                
+              </div>
+            </td>
+            <td>
+                <h2 className="font-bold text-xl">
                         {food.foodName}
                     </h2>
-                </div>
-              </div>
+            </td>
+            <td>
+              {food.location}
             </td>
             <td>
               

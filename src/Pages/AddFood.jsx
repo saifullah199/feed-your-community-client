@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddFood = () => {
@@ -36,6 +37,14 @@ const AddFood = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Food Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
         })
     }
 
@@ -113,7 +122,7 @@ const AddFood = () => {
                             <span className="label-text"> Donor Email</span>
                         </label>
                           <label className="input-group">
-                            <input type="email" name="email" defaultValue={user.email} placeholder="User Email" className="w-full input input-bordered" disabled />
+                            <input type="email" name="email" defaultValue={user?.email} placeholder="User Email" className="w-full input input-bordered" disabled />
                         </label> 
                     </div>
                     <div className="form-control md:w-1/2">
@@ -121,7 +130,7 @@ const AddFood = () => {
                             <span className="label-text"> Donor Name</span>
                         </label>
                           <label className="input-group" >
-                            <input type="text" name="userName" defaultValue={user.displayName} placeholder="User Name" className="w-full input input-bordered"  disabled/>
+                            <input type="text" name="userName" defaultValue={user?.displayName} placeholder="User Name" className="w-full input input-bordered"  disabled/>
                         </label>  
                     </div>
                     </div> 
