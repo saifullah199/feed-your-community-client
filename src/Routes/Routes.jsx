@@ -9,6 +9,7 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import ViewDetails from "../Pages/ViewDetails";
 import UpdateFood from "../Pages/UpdateFood";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -27,15 +28,15 @@ const router = createBrowserRouter([
         },
         {
             path:'/addfood',
-            element:<AddFood/>
+            element:<PrivateRoute> <AddFood/> </PrivateRoute>
         },
         {
             path:'/managefood',
-            element:<ManageMyFoods/>
+            element:<PrivateRoute> <ManageMyFoods/> </PrivateRoute>
         },
         {
             path: '/foodrequest',
-            element:<MyFoodRequest/>,
+            element:<PrivateRoute> <MyFoodRequest/> </PrivateRoute>,
             
         },
         {
@@ -49,13 +50,13 @@ const router = createBrowserRouter([
         
         {
             path: '/viewdetails/:id',
-            element:  <ViewDetails/> ,
+            element:  <PrivateRoute> <ViewDetails/> </PrivateRoute> ,
             loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
             
         },
         {
             path:'/updatefood/:id',
-            element: <UpdateFood/>,
+            element: <PrivateRoute> <UpdateFood/> </PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
         }
       ]

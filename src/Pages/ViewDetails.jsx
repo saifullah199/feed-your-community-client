@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
-
+import axios from "axios"
 
 const ViewDetails = () => {
 
   const {user} = useContext(AuthContext)
     const food = useLoaderData()
     const {foodName, quantity, location, date,status, notes,
-      email,donorName,donorPhoto,foodImage
+      email,donorName,donorPhoto,foodImage,_id
     }= food
 
     const handleReqFood = e =>{
@@ -51,6 +51,14 @@ const ViewDetails = () => {
                  })
              }
          })
+    }
+
+    const handleStatus = async (id,prevStatus, status) => {
+        console.log(id,prevStatus,status)
+        const {data }= await axios.patch(
+           `${import.meta.env.VITE_API_URL}/singlefood/${id}`,{status} 
+        ) 
+        console.log(data)
     }
 
     return (
@@ -194,7 +202,7 @@ const ViewDetails = () => {
                  <input type="text" name="status" defaultValue={status} disabled placeholder="Food Status" className="w-full input input-bordered" />
              </label>
          </div> 
-         <input type="submit" value="Request a Food" className="btn btn-block" />
+         <input onClick={ () => handleStatus(_id, status, 'requested')} type="submit" value="Request this Food" className="btn btn-block" />
     </form>
     
   </div>

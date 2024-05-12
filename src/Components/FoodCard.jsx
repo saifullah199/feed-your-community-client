@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const FoodCard = ({food}) => {
 
     const {foodName, quantity, location, date,status, notes,
-            email,donorName,donorPhoto,foodImage,_id
+            donorName,donorPhoto,foodImage,_id
         }= food
     return (
         <div>
@@ -27,6 +27,8 @@ const FoodCard = ({food}) => {
             <Link to={`/viewdetails/${_id}`}>
                <button  className="btn"> View Details </button>
              </Link>
+
+             <p> {status} </p>
         
     </div>
     </div>

@@ -37,6 +37,8 @@ const FeaturedFoods = () => {
             <Link to={`/viewdetails/${food._id}`}>
                <button  className="btn"> View Details </button>
              </Link>
+
+             <p> {food.status} </p>
         
     </div>
     </div>
