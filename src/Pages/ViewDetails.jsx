@@ -32,7 +32,7 @@ const ViewDetails = () => {
 
             console.log(newReqs)
             // send data to the server
-        fetch('http://localhost:5000/single',{
+        fetch('https://y-theta-weld.vercel.app/single',{
             method:'POST',
             headers: {
              'content-type': 'application/json'

@@ -3,6 +3,7 @@
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
+import axios from "axios";
 
 
 export const AuthContext = createContext(null)
@@ -38,11 +39,22 @@ const AuthProvider = ({children}) => {
       }
 
     useEffect(()=>{
-        onAuthStateChanged(auth, currentUser =>{
+        const unsubscribe =   onAuthStateChanged(auth, currentUser =>{
             console.log('user in the auth state changed', currentUser)
             setUser(currentUser)
             setLoading(false)
+            // if user exists then issue a token
+            if(currentUser){
+                const loggedUser = {email: currentUser.email}
+                axios.post('https://y-theta-weld.vercel.app/jwt',loggedUser,{withCredentials:true})
+                .then(res => {
+                    console.log('token response',res)
+                })
+            }
         })
+        return () =>{
+            return unsubscribe()
+        }
     },[])
     const authInfo ={
         user,
