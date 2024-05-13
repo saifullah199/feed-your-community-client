@@ -27,7 +27,7 @@ const AddFood = () => {
         console.log(newFood);
 
         // send data to the server
-        fetch('https://y-theta-weld.vercel.app/foods',{
+        fetch('http://localhost:5000/foods',{
            method:'POST',
            headers: {
             'content-type': 'application/json'

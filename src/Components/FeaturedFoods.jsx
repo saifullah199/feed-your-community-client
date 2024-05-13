@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeaturedFoods = () => {
     const [foods, setFoods] = useState([])
     useEffect(() => {
-        fetch('https://y-theta-weld.vercel.app/foods')
+        fetch('http://localhost:5000/foods')
         .then(res => res.json())
         .then(data => {
             setFoods(data)

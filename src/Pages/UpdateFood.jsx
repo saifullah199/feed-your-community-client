@@ -30,7 +30,7 @@ const UpdateFood = () => {
         console.log(updateFood);
 
         // send data to the server
-        fetch(`https://y-theta-weld.vercel.app/food/${_id}`,{
+        fetch(`http://localhost:5000/food/${_id}`,{
            method:'PUT',
            headers: {
             'content-type': 'application/json'

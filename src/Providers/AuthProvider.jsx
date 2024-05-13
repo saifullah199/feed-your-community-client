@@ -40,15 +40,25 @@ const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         const unsubscribe =   onAuthStateChanged(auth, currentUser =>{
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = {email: userEmail}
             console.log('user in the auth state changed', currentUser)
             setUser(currentUser)
             setLoading(false)
             // if user exists then issue a token
             if(currentUser){
-                const loggedUser = {email: currentUser.email}
-                axios.post('https://y-theta-weld.vercel.app/jwt',loggedUser,{withCredentials:true})
+                
+                axios.post('http://localhost:5000/jwt',loggedUser,{withCredentials:true})
                 .then(res => {
                     console.log('token response',res)
+                })
+            }
+            else{
+                axios.post('http://localhost:5000/logout',loggedUser,{
+                    withCredentials: true
+                })
+                .then(res => {
+                    console.log(res)
                 })
             }
         })

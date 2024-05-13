@@ -10,7 +10,7 @@ const ManageMyFoods = () => {
     const [foods, setFoods] = useState([])
 
     useEffect(() =>{
-        fetch(`https://y-theta-weld.vercel.app/food/${user?.email}`)
+        fetch(`http://localhost:5000/food/${user?.email}`,{credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setFoods(data)
@@ -31,7 +31,7 @@ const ManageMyFoods = () => {
             if (result.isConfirmed) {
               
             
-            fetch(`https://y-theta-weld.vercel.app/food/${_id}`, {
+            fetch(`http://localhost:5000/food/${_id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

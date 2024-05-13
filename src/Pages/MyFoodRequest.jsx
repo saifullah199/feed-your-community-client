@@ -7,7 +7,7 @@ const MyFoodRequest = () => {
     const [foods, setFoods] = useState([])
 
     useEffect(() =>{
-        fetch(`https://y-theta-weld.vercel.app/singlefood/${user?.email}`)
+        fetch(`http://localhost:5000/singlefood/${user?.email}`,{credentials: 'include'})
         .then(res => res.json())
         .then(data => {
             setFoods(data)
