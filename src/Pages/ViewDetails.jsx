@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios"
-
+import { useMutation } from "@tanstack/react-query";
 const ViewDetails = () => {
 
   const {user} = useContext(AuthContext)
@@ -32,7 +32,7 @@ const ViewDetails = () => {
 
             console.log(newReqs)
             // send data to the server
-        fetch('http://localhost:5000/single',{
+        fetch('https://y-theta-weld.vercel.app/single',{
             method:'POST',
             headers: {
              'content-type': 'application/json'
@@ -53,12 +53,22 @@ const ViewDetails = () => {
          })
     }
 
+ const {mutateAsync} =   useMutation({
+        mutationFn: async ({id,status}) => {
+            const {data }= await axios.patch(
+                `${import.meta.env.VITE_API_URL}/singlefood/${id}`,{status} 
+             ) 
+             console.log(data)
+        },
+        
+    })
+
     const handleStatus = async (id,prevStatus, status) => {
         console.log(id,prevStatus,status)
-        const {data }= await axios.patch(
-           `${import.meta.env.VITE_API_URL}/singlefood/${id}`,{status} 
-        ) 
-        console.log(data)
+        
+        
+
+       await  mutateAsync({id,status})
     }
 
     return (

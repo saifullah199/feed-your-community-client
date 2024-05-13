@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         {
             path: '/available-food',
             element: <AvailableFoods/>,
-            loader: () => fetch('http://localhost:5000/foods')
+            loader: () => fetch('https://y-theta-weld.vercel.app/foods')
         },
         {
             path:'/addfood',
@@ -51,13 +51,13 @@ const router = createBrowserRouter([
         {
             path: '/viewdetails/:id',
             element:  <PrivateRoute> <ViewDetails/> </PrivateRoute> ,
-            loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
+            loader: ({params}) => fetch(`https://y-theta-weld.vercel.app/foods/${params.id}`)
             
         },
         {
             path:'/updatefood/:id',
             element: <PrivateRoute> <UpdateFood/> </PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/foods/${params.id}`)
+            loader: ({params}) => fetch(`https://y-theta-weld.vercel.app/foods/${params.id}`)
         }
       ]
     },

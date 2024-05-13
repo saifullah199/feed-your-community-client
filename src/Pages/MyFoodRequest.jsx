@@ -1,18 +1,38 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
+import axios from "axios"
 
 const MyFoodRequest = () => {
     const {user} = useContext(AuthContext)
-    const [foods, setFoods] = useState([])
 
-    useEffect(() =>{
-        fetch(`http://localhost:5000/singlefood/${user?.email}`,{credentials: 'include'})
-        .then(res => res.json())
-        .then(data => {
-            setFoods(data)
-        })
-    },[user])
+   const {data: foods =[], isLoading, refetch, error} = useQuery({
+      queryFn: () => getData(),
+      queryKey: ['foods']
+    })
+
+    console.log(foods)
+    // const [foods, setFoods] = useState([])
+
+    // useEffect(() =>{
+    //     fetch(`https://y-theta-weld.vercel.app/singlefood/${user?.email}`,{credentials: 'include'})
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setFoods(data)
+    //     })
+    // },[user])
+
+    // useEffect(() => {
+    //   getData()
+    // },[user])
+
+    const getData = async () => {
+      const {data} = await axios(
+        `https://y-theta-weld.vercel.app/singlefood/${user?.email}`, {withCredentials: 'include'}
+      )
+      return data 
+    }
     return (
         <div className="overflow-x-auto">
   <table className="table">
