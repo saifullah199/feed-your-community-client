@@ -13,17 +13,17 @@ const UpdateFood = () => {
     const handleUpdateFood = e =>{
         e.preventDefault()
         const form = e.target;
-        const name = form.name.value;
+        const foodName = form.name.value;
         const quantity = form.quantity.value;
         const location = form.location.value;
         const date = form.date.value;
-        
         const notes = form.notes.value;
+        const foodImage = form.photo.value;
         
          
-        const foodImage = form.photo.value;
+        
 
-        const updateFood = {name, quantity, location, date, notes,
+        const updateFood = {foodName, quantity, location, date, notes,
            foodImage
         }
 
@@ -64,7 +64,7 @@ const UpdateFood = () => {
                             <span className="label-text"> Food Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name " defaultValue={foodName}  placeholder="Food Name" className="w-full input input-bordered" />
+                            <input type="text" name="name" defaultValue={foodName}  placeholder="Food Name" className="w-full input input-bordered" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2">
