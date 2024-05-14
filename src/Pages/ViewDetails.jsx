@@ -199,7 +199,7 @@ const ViewDetails = () => {
                  <span className="label-text"> Donor Image</span>
              </label>
              <label className="input-group">
-                 <input type="text" name="donorPhoto" defaultValue={donorPhoto} disabled placeholder="Donor Image" className="w-full input input-bordered" disabled />
+                 <input type="text" name="donorPhoto" defaultValue={donorPhoto} disabled placeholder="Donor Image" className="w-full input input-bordered"  />
              </label>
          </div>
          

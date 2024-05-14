@@ -3,9 +3,14 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 
 import axios from "axios"
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const MyFoodRequest = () => {
     const {user} = useContext(AuthContext)
+
+    const [startDate, setStartDate] = useState(new Date())
+    const requestedDate = startDate;
 
    const {data: foods =[], isLoading, refetch, error} = useQuery({
       queryFn: () => getData(),
@@ -43,6 +48,8 @@ const MyFoodRequest = () => {
           
         </th>
         <th>Food Image</th>
+        <th>Food Name</th>
+        <th>Additional Notes</th>
         <th>Donar Name</th>
         <th>Pickup Location</th>
         <th>Request date</th>
@@ -68,6 +75,8 @@ const MyFoodRequest = () => {
                 
               </div>
             </td>
+            <td className='font-semibold text-xl '>{food.foodName} </td>
+            <td> {food.notes}</td>
             <td>
                 <h2 className="font-bold text-xl">
                         {food.donorName}
@@ -77,7 +86,7 @@ const MyFoodRequest = () => {
               {food.location}
             </td>
             <td>
-              
+              {new Date(requestedDate).toLocaleDateString()}
              
             </td>
             <td> {food.date} </td>
