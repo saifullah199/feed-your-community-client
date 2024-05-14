@@ -12,6 +12,7 @@ const AvailableFoods = () => {
      const [sort, setSort] = useState('')
     const [search, setSearch] = useState('')
     const [searchText, setSearchText] = useState('')
+    const [isThreeColumn, setIsThreeColumn] = useState(true);
     // useEffect(() => {
     //     const getData = async () => {
     //         const {data} = await axios('https://y-theta-weld.vercel.app/foods')
@@ -30,7 +31,7 @@ const AvailableFoods = () => {
           const { data } = await axios(
             `${
               import.meta.env.VITE_API_URL
-            }/foods?sort=${sort}&search=${search}`
+            }/all-foods?sort=${sort}&search=${search}`
           )
           setFoods(data)
         }
@@ -39,9 +40,23 @@ const AvailableFoods = () => {
 
       const handleSearch = e => {
         e.preventDefault()
-    
+        
         setSearch(searchText)
+        
       }
+      console.log(search)
+
+      const handleReset = () => {
+    
+      setSort('')
+      setSearch('')
+      setSearchText('')
+      }
+
+      const toggleLayout = () => {
+        setIsThreeColumn(!isThreeColumn);
+      };
+
 
     return (
         <div className="">
@@ -75,13 +90,21 @@ const AvailableFoods = () => {
               id='sort'
               className='border p-4 rounded-md'
             >
-              <option value=''
-              >Sort By Expired Date</option>
+              <option value=''>Sort By ExpiredDate</option>
+              <option value="dsc"> Descending Order</option>
+              <option value="asc"> Ascending Order</option>
+              
               
             </select>
           </div>
+            <button onClick={handleReset} className='btn'>
+              Reset
+            </button>
+            <button className="btn" onClick={toggleLayout}>
+              Change Layout
+            </button>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
+            <div className={isThreeColumn ? "grid  grid-cols-3 gap-4 ": "grid grid-cols-2 gap-4"}>
                 {
                     foods.filter(f => f.status === "available")
                     .map(food => <FoodCard key={food._id} food={food}/>)

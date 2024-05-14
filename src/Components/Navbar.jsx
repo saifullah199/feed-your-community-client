@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
-
+import logo from '../assets/images/logo.png'
 
 
 const Navbar = () => {
@@ -62,7 +62,10 @@ const Navbar = () => {
         {navlinks}
       </ul>
     </div>
-    <a className="btn btn-outline btn-warning text-xl">Feed Your Community</a>
+    <Link className=" flex gap-2 " to={'/'}>
+      <img className="w-[50px]" src={logo} alt="" />
+      <a className="btn btn-outline btn-warning text-xl">Feed Your Community</a>
+    </Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
