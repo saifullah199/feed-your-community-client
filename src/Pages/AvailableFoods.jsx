@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 
+
+
 const AvailableFoods = () => {
 
     //  const foods = useLoaderData()
@@ -110,6 +112,8 @@ const AvailableFoods = () => {
                     .map(food => <FoodCard key={food._id} food={food}/>)
                 }
             </div>
+                   
+            
         </div>
     );
 };

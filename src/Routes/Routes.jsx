@@ -11,6 +11,7 @@ import ViewDetails from "../Pages/ViewDetails";
 import UpdateFood from "../Pages/UpdateFood";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import EventCalendar from "../Components/EventCalendar";
 
 
 const router = createBrowserRouter([
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
             path:'/updatefood/:id',
             element: <PrivateRoute> <UpdateFood/> </PrivateRoute>,
             loader: ({params}) => fetch(`https://y-theta-weld.vercel.app/foods/${params.id}`)
+        },
+        {
+            path: '/eventcalendar',
+            element: <EventCalendar/>
         }
       ]
     },

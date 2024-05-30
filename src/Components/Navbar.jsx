@@ -45,6 +45,11 @@ const Navbar = () => {
       }  to='/foodrequest'>
               My Food Request
           </NavLink></li>
+        <li><NavLink className={({isActive}) =>
+      isActive ? 'btn btn-outline btn-success font-bold' : 'font-bold'
+      }  to='/eventcalendar'>
+              Add Event
+          </NavLink></li>
 
         
         
